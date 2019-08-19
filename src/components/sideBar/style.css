@@ -30,7 +30,7 @@ aside {
   }
 }
 
-aside :first-child {
+aside .nestedContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,20 +51,20 @@ aside :first-child {
 }
 
 @media (max-width: 479px) {
-  aside :first-child {
+  aside .nestedContainer {
     min-height: 3.6em;
     max-height: 3.6em;
   }
 }
 
-aside :first-child span {
+aside .nestedContainer span {
   font-size: x-large;
   color: #fff;
   font-weight: 600;
 }
 
 @media (max-width: 479px) {
-  aside :first-child span {
+  aside .nestedContainer span {
     position: absolute;
     left: 94px;
     font-weight: 500;

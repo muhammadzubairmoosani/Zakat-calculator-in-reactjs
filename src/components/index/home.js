@@ -5,31 +5,32 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
-            netIncome: '',
-            coh: '',
-            cib: '',
-            gas: ''
+            total: 0,
+            netIncome: 0,
+            cashOnHand: 0,
+            cashInBank: 0,
+            goldAndSilver: 0,
         }
     }
-    calculate(e) {
-        this.setState({ [e.target.id]: Number(e.target.value) })
-    }
-    fn() {
-        const { netIncome, cib, gas, coh, value } = this.state;
-        this.setState({ value: netIncome + cib + gas + coh })
+
+    onChange(e) {
+        if (typeof e == 'object') {
+            this.setState({ [e.target.id]: Number(e.target.value) })
+        }
+        else {
+            this.setState({
+                total: 0,
+                netIncome: 0,
+                cashOnHand: 0,
+                cashInBank: 0,
+                goldAndSilver: 0,
+            })
+        }
     }
 
-    reset() {
-        
-        // this.setState({total: null})
-        // document.getElementById('result').innerText = '';
-        // document.getElementById('total').innerText = '';
-        // document.getElementById('netIncome').value = '';
-        // document.getElementById('coh').value = '';
-        // document.getElementById('cib').value = '';
-        // document.getElementById('gas').value = '';
-        // console.log(this.state.total)
+    calculate() {
+        const { netIncome, cashInBank, cashOnHand, goldAndSilver } = this.state;
+        this.setState({ total: netIncome + cashInBank + cashOnHand + goldAndSilver })
     }
 
     render() {
@@ -44,11 +45,11 @@ export default class Home extends React.Component {
                     <div id="container">
                         <div className="resultDiv">
                             <p>Zakat due</p>
-                            <p>{this.state.value / 40}</p>
+                            <p>{this.state.total / 40}</p>
                         </div>
                         <div>
                             <div>
-                                Total subject to Zakat: <label>{this.state.value}</label>
+                                Total subject to Zakat: <label>{this.state.total}</label>
                             </div>
                             <table>
                                 <tbody>
@@ -60,24 +61,24 @@ export default class Home extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>Net Income<br />(e.g Annual salary)</td>
-                                        <td><input type="text" id="netIncome" onChange={(e) => this.calculate(e)} /></td>
+                                        <td><input type="text" id="netIncome" value={this.state.netIncome} onChange={(e) => this.onChange(e)} /></td>
                                     </tr>
                                     <tr>
                                         <td>Cash on hand</td>
-                                        <td><input type="text" id="coh" onChange={(e) => this.calculate(e)} /></td>
+                                        <td><input type="text" id="cashOnHand" value={this.state.cashOnHand} onChange={(e) => this.onChange(e)} /></td>
                                     </tr>
                                     <tr>
                                         <td>Cash in banks</td>
-                                        <td><input type="text" id="cib" onChange={(e) => this.calculate(e)} /></td>
+                                        <td><input type="text" id="cashInBank" value={this.state.cashInBank} onChange={(e) => this.onChange(e)} /></td>
                                     </tr>
                                     <tr>
                                         <td>Gold and silver</td>
-                                        <td><input type="text" id="gas" onChange={(e) => this.calculate(e)} /></td>
+                                        <td><input type="text" id="goldAndSilver" value={this.state.goldAndSilver} onChange={(e) => this.onChange(e)} /></td>
                                     </tr>
                                     <tr>
                                         <td colSpan="2">
-                                            <button onClick={() => this.fn()}>Calculate</button>
-                                            <button onClick={() => this.reset}>Reset</button>
+                                            <button onClick={() => this.calculate()}>Calculate</button>
+                                            <button onClick={() => this.onChange('')}>Reset</button>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -18,7 +18,7 @@ export default class sideBar extends React.Component {
         return (
             <>
                 <aside className={this.state.value}>
-                    <div>
+                    <div className='nestedContainer'>
                         <span>About</span>
                     </div>
                     <div>

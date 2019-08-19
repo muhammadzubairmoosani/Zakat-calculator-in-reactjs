@@ -22,7 +22,8 @@ aside {
     width: auto;
     font-size: smaller;
   }
-  :first-child {
+
+  .nestedContainer {
     @include flex-container();
     background-color: #5bce5e;
     height: 4.5em;
