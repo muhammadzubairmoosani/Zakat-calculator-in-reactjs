@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css'
+import Sidebar from '../sideBar/aside'
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -10,38 +11,40 @@ export default class Home extends React.Component {
             cashOnHand: 0,
             cashInBank: 0,
             goldAndSilver: 0,
+            value: false
         }
     }
-
-    onChange(e) {
-        if (typeof e == 'object') {
-            this.setState({ [e.target.id]: Number(e.target.value) })
-        }
-        else {
-            this.setState({
+    
+    onChange = (e) => {
+        (typeof e == 'object')
+            ? this.setState({ [e.target.id]: Number(e.target.value) })
+            : this.setState({
                 total: 0,
                 netIncome: 0,
                 cashOnHand: 0,
                 cashInBank: 0,
                 goldAndSilver: 0,
             })
-        }
     }
 
-    calculate() {
+    calculate = () => {
         const { netIncome, cashInBank, cashOnHand, goldAndSilver } = this.state;
         this.setState({ total: netIncome + cashInBank + cashOnHand + goldAndSilver })
     }
 
+    sideBarHandle = (e) => {
+        this.setState({ value: this.state.value ? !this.state.value : e })
+    }
+
     render() {
-        const { showSideBar, closeSideBar } = this.props;
         return (
             <>
+                <Sidebar value={this.state.value} />
                 <header>
                     <span>Zakat Calculator</span>
-                    <i className="fas fa-bars" onMouseOver={showSideBar}></i>
+                    <i className="fas fa-bars" onMouseOver={() => this.sideBarHandle('show')}></i>
                 </header>
-                <div id="main-container" onMouseOver={closeSideBar}>
+                <div id="main-container" onMouseOver={() => this.sideBarHandle()}>
                     <div id="container">
                         <div className="resultDiv">
                             <p>Zakat due</p>
@@ -78,7 +81,7 @@ export default class Home extends React.Component {
                                     <tr>
                                         <td colSpan="2">
                                             <button onClick={() => this.calculate()}>Calculate</button>
-                                            <button onClick={() => this.onChange('')}>Reset</button>
+                                            <button onClick={() => this.onChange('clear fields')}>Reset</button>
                                         </td>
                                     </tr>
                                 </tbody>
