@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Zakat-calculator-in-reactjs/static/css/main.2f67d3bd.chunk.css",
+    "main.js": "/Zakat-calculator-in-reactjs/static/js/main.2587f42a.chunk.js",
+    "main.js.map": "/Zakat-calculator-in-reactjs/static/js/main.2587f42a.chunk.js.map",
+    "runtime-main.js": "/Zakat-calculator-in-reactjs/static/js/runtime-main.1823e09b.js",
+    "runtime-main.js.map": "/Zakat-calculator-in-reactjs/static/js/runtime-main.1823e09b.js.map",
+    "static/js/2.6a1bb52c.chunk.js": "/Zakat-calculator-in-reactjs/static/js/2.6a1bb52c.chunk.js",
+    "static/js/2.6a1bb52c.chunk.js.map": "/Zakat-calculator-in-reactjs/static/js/2.6a1bb52c.chunk.js.map",
+    "index.html": "/Zakat-calculator-in-reactjs/index.html",
+    "static/css/main.2f67d3bd.chunk.css.map": "/Zakat-calculator-in-reactjs/static/css/main.2f67d3bd.chunk.css.map",
+    "static/js/2.6a1bb52c.chunk.js.LICENSE.txt": "/Zakat-calculator-in-reactjs/static/js/2.6a1bb52c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1823e09b.js",
+    "static/js/2.6a1bb52c.chunk.js",
+    "static/css/main.2f67d3bd.chunk.css",
+    "static/js/main.2587f42a.chunk.js"
+  ]
+}
